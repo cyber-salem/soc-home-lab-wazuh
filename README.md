@@ -2,7 +2,7 @@
 
 **SOC Analyst L1 · Blue Team · Windows Event Investigation · Detection Engineering**
 
-[العربية](README-AR.md) · [Case Studies](investigations/) · [Custom Detection](detection-rules/README.md) · [Evidence Gallery](evidence/GALLERY.md) · [Lab Runbook](operations/LAB-RUNBOOK.md)
+[العربية](README-AR.md) · **[Roadmap — In Progress](ROADMAP.md)** · [Case Studies](investigations/) · [Custom Detection](detection-rules/README.md) · [Evidence Gallery](evidence/GALLERY.md) · [Lab Runbook](operations/LAB-RUNBOOK.md)
 
 I built a Windows-and-Wazuh home lab to practice a junior SOC analyst's workflow: **collect endpoint events, verify alerts, analyze context, test detection logic, and document a defensible conclusion.** Every case in this repository comes from controlled actions in a personal virtual lab.
 
@@ -84,6 +84,12 @@ The [custom Wazuh rule](detection-rules/soc_lab_fim.xml) extends built-in file-c
 - Troubleshooting service state, agent connectivity and logging pipelines is part of operating a lab.
 
 [Real setup problems and fixes](troubleshooting/README.md) · [Scope and limitations](docs/LIMITATIONS.md)
+
+## What's next — Development in Progress
+
+The first lab phase is complete, and the next phase has **five measurable goals**: **process tree investigation**, **repeated failed-logon correlation**, **DNS analysis**, **detection-as-code testing**, and a **read-only AI-assisted SOC triage prototype**. These are future objectives, not completed capabilities.
+
+**[See the five-goal roadmap, planned test cases, and completion criteria →](ROADMAP.md)**
 
 ## Explore the repository
 
