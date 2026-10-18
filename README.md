@@ -1,5 +1,7 @@
 # SOC Home Lab — Wazuh SIEM & Detection Engineering
 
+[الملخص بالعربية](README-AR.md) · [Lab start/stop runbook](operations/LAB-RUNBOOK.md)
+
 **Defensive Security · Windows Telemetry · Detection Validation · SOC L1**
 
 > A hands-on Windows and Wazuh lab for investigating security events, validating file integrity alerts, and testing custom detection logic.
@@ -99,13 +101,14 @@ An organized source archive contains **39 selected screenshots** (from an origin
 
 The final assembled/saved dashboard screenshot was captured later than the organized archive and must be reviewed separately.
 
-See [Evidence review and publication checklist](evidence/README.md).
+See [Evidence review and publication checklist](evidence/README.md) and the [screenshot selection queue](evidence/REVIEW-QUEUE.md).
 
 ## Repository structure
 
 ```text
 .
 ├── README.md
+├── README-AR.md
 ├── architecture/
 │   └── README.md
 ├── investigations/
@@ -119,7 +122,10 @@ See [Evidence review and publication checklist](evidence/README.md).
 ├── dashboard/
 │   └── README.md
 ├── evidence/
-│   └── README.md
+│   ├── README.md
+│   └── REVIEW-QUEUE.md
+├── operations/
+│   └── LAB-RUNBOOK.md
 └── troubleshooting/
     └── README.md
 ```
