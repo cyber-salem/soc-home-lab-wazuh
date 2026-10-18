@@ -4,6 +4,12 @@
 **Environment:** Windows 10 local Security log + Wazuh  
 **Disposition:** Controlled lab authentication failure; no demonstrated compromise
 
+## Evidence preview
+
+| Windows Event Viewer | Correlated Wazuh alert |
+| --- | --- |
+| [![Local Windows Event 4625](../assets/screenshots/event-4625-windows.png)](../assets/screenshots/event-4625-windows.png) | [![Wazuh rule 60122 for Event 4625](../assets/screenshots/event-4625-wazuh.png)](../assets/screenshots/event-4625-wazuh.png) |
+
 ## Trigger and observations
 
 A failed sign-in event was investigated in **Windows Event Viewer → Windows Logs → Security**, then located in Wazuh Threat Hunting.
@@ -11,6 +17,8 @@ A failed sign-in event was investigated in **Windows Event Viewer → Windows Lo
 | Field | Observed or interpreted value |
 | --- | --- |
 | Windows Event ID | `4625` — failed account logon |
+| Windows EventRecordID | `9796` in the selected local event |
+| Wazuh rule ID / level | `60122` / `5` |
 | Logon Type | `2` — interactive logon |
 | Source Network Address | `127.0.0.1` — loopback/local |
 | Account Name | Displayed as `-` in the examined event |
@@ -38,6 +46,6 @@ The user confirmed an intentional, incorrect local PIN attempt in the test VM. T
 
 The separate scenario involving **35 remote logon failures in two minutes** was a *hypothetical analyst exercise*, **not** a demonstrated live detection from this case. It is intentionally excluded from the project's factual results.
 
-## Evidence status
+## Screenshot status
 
-The evidence archive includes Event Viewer details, source-loopback fields, and Wazuh alert views. All screenshots require privacy review before publication.
+The event and Wazuh alert previews are committed to the private repository; full original source and extra failure/status-field crops are retained separately. See [Evidence gallery](../evidence/GALLERY.md).
