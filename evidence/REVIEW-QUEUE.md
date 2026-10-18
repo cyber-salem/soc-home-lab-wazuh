@@ -2,9 +2,22 @@
 
 **Source:** `SOC-Home-Lab-Portfolio-Evidence-Organized.zip`  
 **Curated total:** 39 screenshots  
-**Upload status:** None committed; original pixels preserved in source ZIP.
+**Upload status:** 15 selected, cropped derivatives have been committed to this **private** repository at [`assets/screenshots/`](../assets/screenshots/). Original full-resolution source images are preserved in the separate ZIP.
 
-## Highest-priority selection (review first)
+## Selected and committed to private GitHub
+
+| Image | Status |
+| --- | --- |
+| Final saved dashboard | [Uploaded](../assets/screenshots/dashboard-command-center.png) |
+| Active Windows agent | [Uploaded](../assets/screenshots/wazuh-agent-active.png) |
+| Event 4104 local and Wazuh fields | [Gallery](GALLERY.md#4-powershell-event-4104--cross-source-validation) |
+| Event 4625 local and Wazuh fields | [Gallery](GALLERY.md#3-windows-event-4625--failed-local-sign-in) |
+| FIM before/after SHA-256 and rule 550 | [Gallery](GALLERY.md#5-file-integrity-monitoring--hash-verification) |
+| Custom detection 100100 matching alert and hashes | [Gallery](GALLERY.md#6-custom-wazuh-detection-rule-100100) |
+| SCA transcription passed | [Uploaded](../assets/screenshots/sca-transcription-passed.png) |
+| Connectivity and custom-rule validation | [Gallery](GALLERY.md) |
+
+## Highest-priority source originals (preserved in ZIP)
 
 | Priority | Image in organized ZIP | Intended use |
 | --- | --- | --- |
@@ -31,7 +44,7 @@
 - `07-Dashboard-Visualizations-IN-PROGRESS/` — 5 **editor-stage drafts**, useful as a development journey but not final dashboard proof
 - `08-Troubleshooting-Optional/` — 2 optional before/after screenshots
 
-## Review process (not yet completed)
+## Remaining public-release review
 
 1. Inspect each candidate **at original resolution**, including taskbar, browser tabs, paths, terminal history and IDs.
 2. Prefer cropping to the relevant event fields; preserve unmodified originals privately.
@@ -40,4 +53,4 @@
 5. Confirm the updated dashboard evidence is from its **saved view**, not a draft.
 6. Upload the **approved derivative** only, add caption and link from case study, then request a second pass before setting repository public.
 
-**Review policy:** Presence in the organized ZIP means *curated*, **not approved for public publication**.
+**Review policy:** Source originals are curated, and 15 derivative images are approved for the **private portfolio draft only**. Public publication remains pending a final identity/metadata review and explicit owner approval.
