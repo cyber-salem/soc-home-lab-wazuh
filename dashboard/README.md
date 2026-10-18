@@ -52,4 +52,4 @@ Counts such as **1,716 total alerts / 1 custom alert** were observed in one capt
 
 ## Screenshots
 
-The **final saved dashboard** screenshot has been cropped to retain the five panels and committed to this **private** repository. The five older visualization images in the source archive are only editing-stage drafts. See [Evidence gallery](../evidence/GALLERY.md).
+The **final saved dashboard** screenshot has been cropped to retain the five panels and committed to the repository. The five older visualization images in the source archive are only editing-stage drafts. See [Evidence gallery](../evidence/GALLERY.md).
