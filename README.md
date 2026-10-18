@@ -110,7 +110,7 @@ This is a **personal learning project**, not a production deployment or a claim 
 
 I configured and operated the environment, generated controlled tests, reviewed the Windows and Wazuh output, and validated the results. I used **AI as a supporting learning and documentation tool** for explanations, troubleshooting suggestions, command/configuration examples and writing assistance. Technical conclusions are grounded in the lab's observed evidence, not in AI-generated scenarios.
 
-**Privacy:** The repository is currently private. Selected screenshots have been cropped to remove irrelevant interface areas; a final human review for public visibility is still required. No credentials or tokens are intended to be shared. See the [pre-publication checklist](evidence/README.md).
+**Evidence handling:** The 15 selected screenshots were cropped for readability. Local lab hostnames, private IP addresses and test paths are shown intentionally; access credentials and API tokens are not part of the documented evidence. See the [evidence and privacy policy](evidence/README.md).
 
 ---
 
