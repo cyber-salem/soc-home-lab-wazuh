@@ -2,6 +2,14 @@
 
 **Status: Implemented and tested in the lab.**
 
+## Verified screenshots
+
+| Custom rule alert | Wazuh document fields |
+| --- | --- |
+| [![Wazuh rule 100100 detected](../assets/screenshots/custom-rule-100100-hit.png)](../assets/screenshots/custom-rule-100100-hit.png) | [![Rule 100100 level nine, file modification and SHA256 hashes](../assets/screenshots/custom-rule-100100-fields.png)](../assets/screenshots/custom-rule-100100-fields.png) |
+
+[Rule syntax check and active manager](../assets/screenshots/custom-rule-validation.png) · [Evidence gallery](../evidence/GALLERY.md)
+
 ## Detection logic
 
 The rule in [`soc_lab_fim.xml`](soc_lab_fim.xml) builds on the standard Wazuh integrity-change alert (`if_sid=550`) and matches **only**:
