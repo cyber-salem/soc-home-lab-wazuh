@@ -1,0 +1,25 @@
+# Do not commit credentials, lab keys, machine state or raw archives
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.pfx
+*.kdbx
+*.ova
+*.ovf
+*.vdi
+*.vmdk
+*.vbox
+*.zip
+*.7z
+*.rar
+*.log
+ossec.keys
+client.keys
+credentials.*
+secrets.*
+*.bak
+*.tmp
+.DS_Store
+Thumbs.db
