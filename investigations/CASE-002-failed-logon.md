@@ -48,4 +48,4 @@ The separate scenario involving **35 remote logon failures in two minutes** was 
 
 ## Screenshot status
 
-The event and Wazuh alert previews are committed to the private repository; full original source and extra failure/status-field crops are retained separately. See [Evidence gallery](../evidence/GALLERY.md).
+The event and Wazuh alert previews are committed to the repository; full original source and extra failure/status-field crops are retained separately. See [Evidence gallery](../evidence/GALLERY.md).
