@@ -2,6 +2,10 @@
 
 **Status:** Saved in Wazuh and confirmed to refresh normally.
 
+![Saved SALEM SOC COMMAND CENTER dashboard](../assets/screenshots/dashboard-command-center.png)
+
+*Actual saved dashboard, captured during a particular 24-hour window. Values will change with filters and refresh.*
+
 ## Purpose
 
 The dashboard provides a single view of selected alert statistics and lab detections from **WIN10-SOC-LAB**. It is intended for practicing SOC L1 event triage, not for proving continuous 24/7 production monitoring.
@@ -48,4 +52,4 @@ Counts such as **1,716 total alerts / 1 custom alert** were observed in one capt
 
 ## Screenshots
 
-The final saved-dashboard image is available in the conversation history but was **not contained in the organized 39-image evidence ZIP**. It should be exported or selected separately and reviewed for browser tabs or personal information before uploading to this repository.
+The **final saved dashboard** screenshot has been cropped to retain the five panels and committed to this **private** repository. The five older visualization images in the source archive are only editing-stage drafts. See [Evidence gallery](../evidence/GALLERY.md).
