@@ -1,0 +1,9 @@
+<!-- Authorized lab test: alert on a change to the specific monitored test file. -->
+<group name="syscheck,soc_lab,">
+  <rule id="100100" level="9">
+    <if_sid>550</if_sid>
+    <field name="file" type="pcre2">(?i)^c:\\soc-lab-fim\\important\.txt$</field>
+    <description>SOC LAB: Protected test file modified - $(file)</description>
+    <group>fim_lab,</group>
+  </rule>
+</group>
