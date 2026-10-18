@@ -121,6 +121,8 @@ See [Evidence review and publication checklist](evidence/README.md) and the [scr
 │   └── soc_lab_fim.xml
 ├── dashboard/
 │   └── README.md
+├── docs/
+│   └── LIMITATIONS.md
 ├── evidence/
 │   ├── README.md
 │   └── REVIEW-QUEUE.md
@@ -129,6 +131,8 @@ See [Evidence review and publication checklist](evidence/README.md) and the [scr
 └── troubleshooting/
     └── README.md
 ```
+
+For production-readiness caveats and experiments that are **not yet completed**, see [Scope and limitations](docs/LIMITATIONS.md).
 
 ## Scope and transparency
 
