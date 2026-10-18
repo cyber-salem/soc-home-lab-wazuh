@@ -4,6 +4,12 @@
 **Lab action:** Authorized Registry change using `New-ItemProperty`  
 **Disposition:** True detection of a benign, controlled test
 
+## Evidence preview
+
+| Local PowerShell event | Wazuh normalized event |
+| --- | --- |
+| [![Local PowerShell 4104](../assets/screenshots/event-4104-windows-local.png)](../assets/screenshots/event-4104-windows-local.png) | [![Wazuh 4104 correlated details](../assets/screenshots/event-4104-wazuh-correlation.png)](../assets/screenshots/event-4104-wazuh-correlation.png) |
+
 ## Detection objective
 
 Verify that a meaningful Windows PowerShell Script Block Logging event (`4104`) is collected and produces an alert in Wazuh.
@@ -17,7 +23,7 @@ New-ItemProperty -Path 'HKCU:\Software\SOC-Lab' `
   -Name 'Case003Fresh' -Value 'Detection-Test' -PropertyType String -Force
 ```
 
-This modifies **only a test value**. It is not an persistence mechanism or proof of compromise.
+This modifies **only a test value**. It is not a persistence mechanism or proof of compromise.
 
 ## Troubleshooting
 
@@ -46,6 +52,6 @@ The **matching EventRecordID and ScriptBlock ID** between the Windows event and 
 - **Conclusion:** **Benign authorized test**, not a malicious incident.
 - **Limitation:** Event 4104 confirms logged script text; it is not a general guarantee that every PowerShell execution is visible or that every script succeeded.
 
-## Evidence status
+## Screenshot status
 
-Windows event and Wazuh alert screenshots exist in the uploaded evidence archive. Screenshots will be linked only after privacy review.
+The two evidence previews are committed to the private repository. Both show local lab results, with the original files preserved in the supplied archive. [Evidence gallery](../evidence/GALLERY.md).
