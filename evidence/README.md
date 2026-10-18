@@ -1,48 +1,48 @@
-# Evidence policy and pre-publication review
+# Evidence handling and review policy
 
-[← Project](../README.md) · [Screenshot gallery](GALLERY.md) · [Selection queue](REVIEW-QUEUE.md)
+[← Project overview](../README.md) · [Evidence gallery](GALLERY.md) · [Source selection notes](REVIEW-QUEUE.md)
 
-## Current state
+## Evidence inventory
 
-- **39** curated screenshots in the original organized archive, plus **1** final saved-dashboard screenshot added afterward.
-- **15** selected presentation screenshots have been cropped for readability and uploaded to `assets/screenshots/` in this **private** repository.
-- The screenshots are real records of a controlled Wazuh/Windows home lab. No event values, rule IDs, SHA-256 strings or dashboard counts were fabricated or changed by the cropping process.
-- The underlying unaltered source images remain in the separate original evidence archive; they are **not** uploaded.
-- The five visualization editor images from the early archive remain **draft-stage evidence** and have not been substituted for the final dashboard image.
+- The source evidence archive contains **39 curated screenshots**, plus **one final saved-dashboard screenshot** captured later.
+- **15 selected screenshots** were cropped for clarity and committed to [`assets/screenshots/`](../assets/screenshots/). The original source screenshots remain separate from this repository.
+- The five visualization images in the source archive depict editing steps and are **not** used as substitutes for the actual saved dashboard.
+- The screenshots preserve their technical values; cropping does not change event IDs, rule IDs, timestamps, checksums, or Wazuh counts.
 
-Open the [curated gallery](GALLERY.md) to review screenshots in their investigation context.
+See the [curated evidence gallery](GALLERY.md) for captions, interpretations, and links to case reports.
 
-## Why only 15 screenshots?
+## Privacy and screenshot scope
 
-Recruiters need to see the result and an example of analyst reasoning without scrolling through every configuration click. The main README links directly to the strongest examples. The source archive and review queue preserve additional context for deeper technical discussion.
+The selected screenshots have been visually reviewed for obvious exposed passwords, authentication tokens, and keys. **No such secret was identified in the reviewed presentation set.** This is a visual check, not a guarantee that every possible disclosure has been ruled out.
 
-## Public release checklist
+The project owner intentionally retains test-only VM hostnames, local account labels, **RFC 1918 private IP addresses**, and lab file paths where they improve the evidence. These identify the controlled home-lab environment; they are not login credentials or public Internet service addresses.
 
-- [x] Collect evidence from the controlled lab.
-- [x] Select high-signal images for incident/event investigations, FIM, custom detection, and final dashboard.
-- [x] Crop extraneous interface areas while preserving technical fields.
-- [x] Upload the 15 presentation files to a **private** repository.
-- [x] Link them from the README and the relevant technical case reports.
-- [ ] **Final human inspection of each displayed image** at full resolution for names, account identifiers, paths, terminal histories, browser tabs and environment-specific details.
-- [ ] Decide which VM hostnames and local IP/MAC details are acceptable to publish publicly.
-- [ ] Confirm the public captions exactly match evidence and all selected images are legible on a mobile screen.
-- [ ] Explicitly approve switching the repository to **Public**.
+For every **new** screenshot or log export, recheck:
+- Passwords, session tokens, API keys, private keys, cookies, and access headers
+- Personal email addresses, names, desktop/browser tabs, and shell history
+- Configuration secrets in terminal output or environment variables
+- Non-lab information accidentally included in a window, path, or network trace
+- Whether the caption correctly identifies *the exact event in the image*
 
-**No password or API token has been intentionally included in the presentation set, but cropping is not equivalent to complete sensitive-data redaction.** Do not use the private status as a substitute for the release checklist.
+## Analyst evidence quality
 
-## Interpretation safeguards
+A clean screenshot must demonstrate a relevant fact rather than merely look technical.
 
-- Windows Event `4625` demonstrates an authentication failure, not automatically brute force.
-- PowerShell Event `4104` demonstrates logging of script-block text, not proof the script succeeded.
-- File Integrity Monitoring rule `550` demonstrates a file integrity change, not which actor performed it.
-- Rule `100100` applies to one protected file in the lab. The result does not establish a low false-positive rate for a production deployment.
-- The saved dashboard reflects the filters and time range of one session; its numbers are not permanently fixed.
-- Only the four documented cases and one custom detection are claimed as completed.
+| Claim | Best supporting evidence | What it does **not** prove |
+| --- | --- | --- |
+| Windows agent was connected | Wazuh endpoints status, hostname, agent IP | Every desired event source was configured |
+| Event 4625 reached Wazuh | Windows event details + Wazuh rule 60122 | A malicious brute-force attack |
+| Event 4104 reached Wazuh | Wazuh Windows-origin record 878 and script content | That an uploaded screenshot of other 4104 records is the same event |
+| FIM detected a change | Rule 550 plus before/after SHA-256 | Which process or user made the change |
+| Custom rule 100100 fired | Alert fields, file path, rule ID and controlled test | Production-grade alert precision |
+| Dashboard was saved | Final five-panel saved-dashboard screenshot | Continuous production SOC monitoring |
 
-## Files and provenance
+### Important PowerShell screenshot distinction
 
-The companion export **SOC-Portfolio-Reviewed-Screenshots.zip** contains the presentation images and an asset manifest with each original filename, original SHA-256, processed SHA-256, crop coordinates and dimensions.
+The gallery's Windows-local query screenshot shows **EventRecordIDs 871 and 872**, generated by the investigator's own PowerShell searches. **It does not show the controlled test's record 878.** The Wazuh document screenshot independently shows Windows-origin EventRecordID **878** and the `Case003Fresh` script. The images are presented separately for those different purposes.
 
-The source archive **SOC-Home-Lab-Evidence-Review-Pack-v2.zip** is retained as the full 40-image provenance collection.
+## Source integrity
 
-[Review queue and outstanding work](REVIEW-QUEUE.md)
+The companion `SOC-Portfolio-Reviewed-Screenshots.zip` export includes an asset manifest describing source filenames, crop coordinates, output dimensions, and SHA-256 checksums. Originals are retained separately. Screenshot crops are for presentation, not for changing evidence.
+
+Keep future updates accurate by linking a case report to its observed test and explicitly noting when a screenshot shows a *different* step in the investigation.
