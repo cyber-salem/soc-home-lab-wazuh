@@ -2,9 +2,9 @@
 
 **Source:** `SOC-Home-Lab-Portfolio-Evidence-Organized.zip`  
 **Curated total:** 39 screenshots  
-**Upload status:** 15 selected, cropped derivatives have been committed to this **private** repository at [`assets/screenshots/`](../assets/screenshots/). Original full-resolution source images are preserved in the separate ZIP.
+**Upload status:** 15 selected, cropped derivatives have been committed to this repository at [`assets/screenshots/`](../assets/screenshots/). Original full-resolution source images are preserved in the separate ZIP.
 
-## Selected and committed to private GitHub
+## Selected and committed to GitHub
 
 | Image | Status |
 | --- | --- |
@@ -44,13 +44,13 @@
 - `07-Dashboard-Visualizations-IN-PROGRESS/` — 5 **editor-stage drafts**, useful as a development journey but not final dashboard proof
 - `08-Troubleshooting-Optional/` — 2 optional before/after screenshots
 
-## Remaining public-release review
+## Ongoing evidence quality checks
 
 1. Inspect each candidate **at original resolution**, including taskbar, browser tabs, paths, terminal history and IDs.
 2. Prefer cropping to the relevant event fields; preserve unmodified originals privately.
 3. Redact credentials / tokens entirely. Decide whether usernames, private IPs and MAC addresses should be displayed.
 4. Check that every screenshot demonstrates the claim made in the caption.
 5. Confirm the updated dashboard evidence is from its **saved view**, not a draft.
-6. Upload the **approved derivative** only, add caption and link from case study, then request a second pass before setting repository public.
+6. Upload only reviewed derivative images and confirm that each caption describes the actual event shown.
 
-**Review policy:** Source originals are curated, and 15 derivative images are approved for the **private portfolio draft only**. Public publication remains pending a final identity/metadata review and explicit owner approval.
+**Review policy:** Source originals are curated separately. The 15 derivative images are provided as supporting evidence for the portfolio, with lab-only hostnames and private IPs retained intentionally by the project owner. Reassess any new screenshots before publishing them.
