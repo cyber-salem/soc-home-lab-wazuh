@@ -4,6 +4,14 @@
 **Lab path:** `C:\SOC-Lab-FIM\important.txt`  
 **Disposition:** Authorized test-file modification detected successfully
 
+## Evidence preview
+
+| SHA-256 before | SHA-256 after |
+| --- | --- |
+| [![SHA256 before](../assets/screenshots/fim-sha256-before.png)](../assets/screenshots/fim-sha256-before.png) | [![SHA256 after](../assets/screenshots/fim-sha256-after.png)](../assets/screenshots/fim-sha256-after.png) |
+
+[![Wazuh FIM alert fields and hashes](../assets/screenshots/fim-rule-550-hashes.png)](../assets/screenshots/fim-rule-550-hashes.png)
+
 ## Objective
 
 Verify that Wazuh detects a change to a monitored Windows file, compares integrity data, and emits useful fields for triage.
@@ -56,6 +64,6 @@ In the captured alert, the monitored test file's modified time and SHA-256 field
 
 A separate custom rule `100100` was written and tested to highlight changes to this specific file. See [Detection Engineering](../detection-rules/README.md).
 
-## Evidence status
+## Screenshot status
 
-Original and modified SHA-256 screenshots and detailed Wazuh rule 550 fields are available in the organized evidence archive, pending review before public sharing.
+Cropped before/after SHA-256 screenshots and Wazuh rule 550 document fields are included in the private repository. [Evidence gallery](../evidence/GALLERY.md).
