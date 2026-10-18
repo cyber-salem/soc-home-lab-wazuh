@@ -1,51 +1,48 @@
-# Evidence review — publication pending
+# Evidence policy and pre-publication review
 
-The supplied archive **SOC-Home-Lab-Portfolio-Evidence-Organized.zip** contains **39 curated screenshots** in eight sections, plus a bilingual index, mapping CSV and an excluded-images list. The original organizer reported selecting 39 out of 228 images.
+[← Project](../README.md) · [Screenshot gallery](GALLERY.md) · [Selection queue](REVIEW-QUEUE.md)
 
-**The source screenshots were preserved without redaction**. None has been committed to the GitHub repository yet. This is intentional: every image must pass content and privacy review before publication.
+## Current state
 
-## Evidence families
+- **39** curated screenshots in the original organized archive, plus **1** final saved-dashboard screenshot added afterward.
+- **15** selected presentation screenshots have been cropped for readability and uploaded to `assets/screenshots/` in this **private** repository.
+- The screenshots are real records of a controlled Wazuh/Windows home lab. No event values, rule IDs, SHA-256 strings or dashboard counts were fabricated or changed by the cropping process.
+- The underlying unaltered source images remain in the separate original evidence archive; they are **not** uploaded.
+- The five visualization editor images from the early archive remain **draft-stage evidence** and have not been substituted for the final dashboard image.
 
-| Section in supplied ZIP | Images | Planned use |
-| --- | ---: | --- |
-| Lab setup/network | 4 | Architecture and connectivity |
-| Wazuh server/agent | 5 | Service, endpoint, collected events |
-| PowerShell / SCA | 7 | Logging configuration, Event ID 4104 |
-| Failed logon | 6 | Event ID 4625, supporting fields |
-| FIM | 6 | Controlled change, hashes, rule 550 |
-| Custom rule | 4 | Configuration test, rule 100100 |
-| Visualization drafts | 5 | Dashboard assembly process only |
-| Optional troubleshooting | 2 | Before/after manager startup |
+Open the [curated gallery](GALLERY.md) to review screenshots in their investigation context.
 
-### Important correction to the original archive
+## Why only 15 screenshots?
 
-The supplied archive labels the five visualization images as **IN PROGRESS**. They remain valid **intermediate editor screenshots**. The dashboard was subsequently completed, saved, and tested separately, under the title **SALEM | SOC COMMAND CENTER**. Do **not** repurpose those five drafts as proof of the final saved dashboard; obtain the final screenshot from the later test.
+Recruiters need to see the result and an example of analyst reasoning without scrolling through every configuration click. The main README links directly to the strongest examples. The source archive and review queue preserve additional context for deeper technical discussion.
 
-## High-value evidence for the portfolio front page
+## Public release checklist
 
-- Agent connected / active
-- Event 4104 correlated to Wazuh rule 91843
-- Rule 550 FIM change with SHA-256 fields
-- Custom rule 100100 alert plus its fields
-- Final saved dashboard, with five panels and no accidental level filter
+- [x] Collect evidence from the controlled lab.
+- [x] Select high-signal images for incident/event investigations, FIM, custom detection, and final dashboard.
+- [x] Crop extraneous interface areas while preserving technical fields.
+- [x] Upload the 15 presentation files to a **private** repository.
+- [x] Link them from the README and the relevant technical case reports.
+- [ ] **Final human inspection of each displayed image** at full resolution for names, account identifiers, paths, terminal histories, browser tabs and environment-specific details.
+- [ ] Decide which VM hostnames and local IP/MAC details are acceptable to publish publicly.
+- [ ] Confirm the public captions exactly match evidence and all selected images are legible on a mobile screen.
+- [ ] Explicitly approve switching the repository to **Public**.
 
-These will be selected and embedded only after reviewing the original images at full resolution.
+**No password or API token has been intentionally included in the presentation set, but cropping is not equivalent to complete sensitive-data redaction.** Do not use the private status as a substitute for the release checklist.
 
-## Review checklist
+## Interpretation safeguards
 
-Before committing any screenshot, check for:
+- Windows Event `4625` demonstrates an authentication failure, not automatically brute force.
+- PowerShell Event `4104` demonstrates logging of script-block text, not proof the script succeeded.
+- File Integrity Monitoring rule `550` demonstrates a file integrity change, not which actor performed it.
+- Rule `100100` applies to one protected file in the lab. The result does not establish a low false-positive rate for a production deployment.
+- The saved dashboard reflects the filters and time range of one session; its numbers are not permanently fixed.
+- Only the four documented cases and one custom detection are claimed as completed.
 
-- Credentials, private keys, API tokens, authentication headers, shared-folder secrets or browser authentication content
-- Personal usernames, emails, hostnames, window titles and browser tab titles
-- Lab IP addresses, MAC addresses and software version details (decide intentionally whether they should appear)
-- Unexpected terminal history, command outputs, file paths and system identifiers
-- Misleading screenshots, such as a failed configuration presented as final or editor drafts labeled complete
+## Files and provenance
 
-**A private GitHub repository is not a substitute for data minimization.** Keep the source ZIP in local storage until approved assets are ready.
+The companion export **SOC-Portfolio-Reviewed-Screenshots.zip** contains the presentation images and an asset manifest with each original filename, original SHA-256, processed SHA-256, crop coordinates and dimensions.
 
-## Evidence interpretation limits
+The source archive **SOC-Home-Lab-Evidence-Review-Pack-v2.zip** is retained as the full 40-image provenance collection.
 
-- Event 4625 **alone** does not demonstrate brute-force activity.
-- Rule 550 demonstrates a monitored file integrity change, **not** attacker attribution.
-- Rule 100100 is the **one custom rule** demonstrated, not a wider detection ruleset.
-- Dashboard numbers are time/filter dependent, not fixed performance metrics.
+[Review queue and outstanding work](REVIEW-QUEUE.md)
