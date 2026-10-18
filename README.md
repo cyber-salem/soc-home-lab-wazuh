@@ -1,111 +1,136 @@
 # SOC Home Lab — Wazuh SIEM & Detection Engineering
 
-> A hands-on defensive security lab focused on Windows event analysis, security alert triage, file integrity monitoring (FIM), and custom detection engineering.
+**Defensive Security · Windows Telemetry · Detection Validation · SOC L1**
 
-**Status:** Core lab implementation and dashboard completed. Portfolio documentation and evidence review in progress.
+> A hands-on Windows and Wazuh lab for investigating security events, validating file integrity alerts, and testing custom detection logic.
 
-## Overview
+**Project status:** Core lab implementation and saved monitoring dashboard **completed** · Written case studies **completed** · Screenshot privacy review **pending** · Repository **private** until final review.
 
-This project documents a home SOC lab built to practice the workflow of a junior security operations center (SOC) analyst: collecting telemetry, validating detections, investigating alerts, and documenting findings.
+## Project at a glance
 
-All test activities described here took place in a controlled virtual lab. A detection does **not**, by itself, prove a malicious intrusion.
+I built and operated a small virtual SOC lab to learn how endpoint activity becomes a security alert, and how to decide what the evidence actually proves. The workflow goes beyond opening a dashboard: each exercise checks the relevant event fields, compares the local log with Wazuh output when possible, and records the difference between a **detection** and a **confirmed incident**.
 
-## Lab architecture
-
-| Component | Technology / purpose |
+| Component | Implementation |
 | --- | --- |
-| Hypervisor | Oracle VirtualBox |
-| SIEM | Wazuh 4.14.8 (manager, indexer, dashboard) |
-| Endpoint | Windows 10 VM with Wazuh agent 4.14.8 |
-| Host | Windows 11 |
-| Lab networking | VirtualBox NAT and host-only networking |
-| Log sources | Windows Security events, PowerShell Operational events, Wazuh FIM |
-| Visualization | Custom Wazuh/OpenSearch dashboard |
+| SIEM | Wazuh 4.14.8 — manager, indexer and dashboard |
+| Monitored host | Windows 10 VM with Wazuh agent |
+| Virtualization | Oracle VirtualBox on Windows 11 |
+| Host-only lab segment | `192.168.56.0/24` (local test network) |
+| Telemetry | Windows Security, PowerShell Operational and Wazuh FIM |
+| Custom detection | Rule **100100**, file-specific FIM alert |
+| Analyst dashboard | **SALEM \| SOC COMMAND CENTER** — five visualizations |
 
-The Wazuh server and Windows agent communicate over an isolated host-only lab network. Architecture diagrams and redacted screenshots will be added after review.
+See [lab architecture and telemetry flow](architecture/README.md).
 
-## Investigations and exercises
+## Architecture
 
-| Case | Topic | What was verified |
-| --- | --- | --- |
-| 001 | PowerShell transcription hardening | A failed configuration assessment was investigated; transcription was enabled and the assessment subsequently passed. |
-| 002 | Windows failed sign-in | Event ID 4625 was inspected, including logon type, failure details, and related authentication evidence. |
-| 003 | PowerShell registry activity | Event ID 4104 was collected and correlated with Wazuh rule 91843 using the Windows EventRecordID and script block details. |
-| 004 | File integrity monitoring | An authorized change to a test file produced a rule 550 alert; SHA-256 values before and after the change were compared. |
+```mermaid
+flowchart LR
+  W["Windows 10 endpoint\nWazuh agent"]
+  M["Wazuh Manager\nDetection rules"]
+  I["Wazuh Indexer"]
+  D["Wazuh Dashboard"]
+  A["SOC analyst"]
+  W -->|"Windows Events + FIM"| M
+  M -->|"Alerts"| I
+  I --> D
+  D --> A
+```
 
-Case notes, limitations, and sanitized supporting evidence are being prepared.
+The network details, communication tests and scope limitations are documented in [Architecture](architecture/README.md).
+
+## Case studies
+
+| Case | Focus | Outcome | Technical write-up |
+| --- | --- | --- | --- |
+| 001 | PowerShell transcription / SCA | Missing policy identified, enabled and rechecked as **Passed** | [Read case](investigations/CASE-001-powershell-transcription.md) |
+| 002 | Windows Event **4625** | Controlled failed sign-in triaged using logon type, status and source address | [Read case](investigations/CASE-002-failed-logon.md) |
+| 003 | PowerShell Event **4104** | Local event **878** correlated to Wazuh rule **91843** | [Read case](investigations/CASE-003-powershell-4104.md) |
+| 004 | File Integrity Monitoring | Test-file modification detected by rule **550**; SHA-256 change verified | [Read case](investigations/CASE-004-fim.md) |
+
+**Important:** The detected registry and file modifications were intentional lab actions. A matching rule is not, on its own, evidence of malicious activity. A separate remote-login brute-force example was an analyst training scenario, **not** a captured incident.
 
 ## Custom detection engineering
 
-A custom Wazuh rule was created to detect changes to a specific test file monitored by FIM.
+A custom rule detects a change to one deliberately protected test file:
 
-- **Custom rule ID:** `100100`
-- **Severity level:** `9` (lab-defined priority)
-- **Parent detection:** Wazuh rule `550` — file integrity checksum changed
-- **Target:** `C:\SOC-Lab-FIM\important.txt`
-- **Positive test:** Editing the target file generated a custom alert.
-- **Negative test:** Editing a different monitored file generated a general FIM alert, without generating a new rule 100100 alert in the observed test window.
+- Rule **100100**, level **9** (priority chosen for this lab).
+- Extends the default Wazuh FIM modification rule **550**.
+- Matches `C:\SOC-Lab-FIM\important.txt`, not every file in the directory.
+- **Positive test passed:** changing that file generated a rule 100100 alert.
+- **Negative test passed in observed window:** changing `other-test.txt` generated a standard FIM alert without generating a new rule 100100 alert.
 
-The custom rule and reproduction steps will be published in `detection-rules/` after a final review.
+**Source and test steps:** [Detection engineering](detection-rules/README.md) · [Custom rule XML](detection-rules/soc_lab_fim.xml)
 
 ## SOC monitoring dashboard
 
-A saved dashboard titled **SALEM | SOC COMMAND CENTER** brings together five visualizations:
+**SALEM | SOC COMMAND CENTER** was saved and verified to refresh with all five panels:
 
-1. Total Security Alerts
-2. Alert Severity Distribution
-3. PowerShell Activity Timeline
-4. File Integrity Monitoring
-5. Custom Detection Alerts
+| Panel | What it helps answer |
+| --- | --- |
+| Total Security Alerts | How much detected alert activity is present? |
+| Alert Severity Distribution | Which Wazuh rule levels dominate the alert count? |
+| PowerShell Activity Timeline | When do alerted PowerShell 4104 events cluster? |
+| File Integrity Monitoring | When are monitored-file changes producing alerts? |
+| Custom Detection Alerts | How many alerts matched rule 100100 in the selected window? |
 
-The dashboard was saved and its visualizations were confirmed to refresh successfully.
+[Dashboard configuration, interpretation and validation](dashboard/README.md)
 
-**Interpretation note:** Counts depend on the selected time range and filters. Wazuh rule levels reflect alert severity settings, not definitive evidence of malicious activity.
+All counts depend on the selected time range and active filters; the dashboard does not count every raw Windows event.
 
-## Investigation approach
+## Investigation method
 
-The lab follows a repeatable workflow:
+**Alert → Validate event → Gather context → Assess impact → Decide action → Document evidence**
 
-**Alert → Validate event → Collect context → Assess impact → Determine disposition → Document evidence**
-
-The project emphasizes distinguishing directly observed facts from hypotheses, and testing both expected detections and non-matching behavior.
+For every case, I separate:
+- **Observed facts:** event ID, rule ID, event record, hash, path, timestamp, etc.
+- **Interpretation:** what those fields establish, and what they do **not** establish.
+- **Next steps:** missing process/user context, change authorization, related events and disposition.
 
 ## Troubleshooting and lessons learned
 
-During setup, the lab required practical troubleshooting of:
+The lab involved diagnosing a Wazuh manager startup timeout, agent deployment issues, constrained VM performance, PowerShell session/logging behavior, and successful vs. non-matching rule tests.
 
-- Wazuh manager startup timeout
-- VM resource constraints and slow guest performance
-- Windows agent installation and network connectivity
-- PowerShell logging and session behavior
-- Detection-rule validation and alert correlation
+See [Troubleshooting notes](troubleshooting/README.md).
 
-A detailed, evidence-based troubleshooting log will be added as part of the final portfolio.
+## Evidence and publication status
 
-## Planned repository structure
+An organized source archive contains **39 selected screenshots** (from an original set reported as 228). These include lab setup, Wazuh alerts, Windows Event Viewer, FIM hashes, custom-rule validation and visualization drafts. **Raw screenshots are not committed yet** because privacy review and final selection are still outstanding.
+
+The final assembled/saved dashboard screenshot was captured later than the organized archive and must be reviewed separately.
+
+See [Evidence review and publication checklist](evidence/README.md).
+
+## Repository structure
 
 ```text
-soc-home-lab-wazuh/
+.
 ├── README.md
 ├── architecture/
+│   └── README.md
 ├── investigations/
+│   ├── CASE-001-powershell-transcription.md
+│   ├── CASE-002-failed-logon.md
+│   ├── CASE-003-powershell-4104.md
+│   └── CASE-004-fim.md
 ├── detection-rules/
-├── screenshots/
+│   ├── README.md
+│   └── soc_lab_fim.xml
+├── dashboard/
+│   └── README.md
+├── evidence/
+│   └── README.md
 └── troubleshooting/
+    └── README.md
 ```
-
-These folders will be populated incrementally after verifying the source files and reviewing screenshots for sensitive information.
 
 ## Scope and transparency
 
-This is a **personal learning lab**, not a production SOC deployment or a claim of professional incident-response experience.
+This is a **personal training project**, not a production SOC deployment or a claim of workplace incident-response experience.
 
-I built and operated the virtual lab, carried out configuration changes and controlled tests, investigated alerts, interpreted evidence, and checked the results in Windows logs and Wazuh. The custom detection and monitoring dashboard were validated through hands-on testing.
-
-AI-assisted guidance supported parts of the learning process, including technical explanations, troubleshooting suggestions, command and configuration examples, and documentation drafting. It was **a supporting tool, not evidence of a detection or a substitute for hands-on validation and analytical judgment**.
-
-No live company data or third-party systems were used.
+I configured the lab, performed the tests, examined the resulting Windows/Wazuh evidence, and validated the detection behavior. **AI-assisted guidance** was used for explanations, troubleshooting suggestions, command/configuration examples and documentation support. The technical claims in this repository are tied to actions and results verified in the actual lab—not to AI-generated simulations.
 
 ---
 
-**Maintainer:** [cyber-salem](https://github.com/cyber-salem)
+**Maintainer:** [cyber-salem](https://github.com/cyber-salem)  
+**Next steps:** Review and redact evidence; add selected screenshots; review the repository before making it public.
