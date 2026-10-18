@@ -4,7 +4,7 @@
 
 All screenshots below come from the controlled Wazuh/Windows lab. The cropped PNGs preserve the displayed **rule IDs, event IDs, timestamps and hashes**. The source archive remains available separately; crops are presentation derivatives, not edited logs.
 
-**Publication scope:** these images are committed to the **private** GitHub repository. Before making the repository public, check personally identifying labels and lab system details.
+**Publication scope:** Screenshots were cropped to emphasize relevant lab evidence. Lab-only usernames, hostnames, and private network addresses may remain visible; no credentials or API tokens were observed in the review of the selected set. This does not replace a full confidential-data audit.
 
 ## 1. Saved SOC command center
 
@@ -36,9 +36,9 @@ Supporting detail: [TCP 1514/1515 connectivity test](../assets/screenshots/agent
 
 | Windows PowerShell Operational | Wazuh Document Details |
 | --- | --- |
-| [![Local Event 4104 details](../assets/screenshots/event-4104-windows-local.png)](../assets/screenshots/event-4104-windows-local.png) | [![Wazuh event 4104 and EventRecordID 878 details](../assets/screenshots/event-4104-wazuh-correlation.png)](../assets/screenshots/event-4104-wazuh-correlation.png) |
+| [![Windows logging investigation: 4104 events from the investigator's own search commands (record IDs 871 and 872)](../assets/screenshots/event-4104-windows-local.png)](../assets/screenshots/event-4104-windows-local.png) | [![Wazuh alert containing Windows Event 4104, EventRecordID 878 and the controlled Case003Fresh script block](../assets/screenshots/event-4104-wazuh-correlation.png)](../assets/screenshots/event-4104-wazuh-correlation.png) |
 
-*Matched Event ID **4104** and EventRecordID **878** to Wazuh rule **91843**. The script block shows the benign, intentional `Case003Fresh` test.*
+*These two screenshots document **different** 4104 events. The left screenshot shows self-generated records **871/872** from the investigator's search commands. The right screenshot records the separate authorized `Case003Fresh` activity in Wazuh with Windows **EventRecordID 878** and rule **91843**. Do not interpret the left screenshot as a local view of record 878.*
 
 [Read Case 003](../investigations/CASE-003-powershell-4104.md)
 
@@ -79,5 +79,5 @@ Supporting detail: [TCP 1514/1515 connectivity test](../assets/screenshots/agent
 - The images above were copied from the provided evidence pack, then **cropped only**. Cropping does not establish new facts or replace original logs.
 - All 15 derivative image files have a local SHA-256 manifest in the companion asset export.
 - Images from the five draft visualization editors are **not** used as final dashboard evidence.
-- Private lab IPs/host labels visible in some screenshots are illustrative local environment details; re-review them before public release.
+- Private lab IPs and VM host labels are intentionally retained as part of the architecture evidence. No credentials or tokens should be published.
 - Avoid treating a "true positive detection of authorized test activity" as a confirmed malicious incident.
