@@ -24,6 +24,21 @@ For every **new** screenshot or log export, recheck:
 - Non-lab information accidentally included in a window, path, or network trace
 - Whether the caption correctly identifies *the exact event in the image*
 
+## Screenshot quality audit — 2026-10-18
+
+All **15 public screenshot assets** were checked for legibility, accidental clipping, consistency with investigation captions, and obvious secrets. Four existing cropped images were improved without modifying the underlying event fields:
+
+| File | QA correction |
+| --- | --- |
+| `custom-rule-100100-hit.png` | The complete alert row and rule 100100 are now visible |
+| `event-4625-wazuh.png` | The complete Wazuh 60122 alert row is visible |
+| `fim-rule-550-hit.png` | Both returned integrity alerts are visible, not just the first row |
+| `custom-rule-validation.png` | Cropped unrelated earlier SSH rule history and excess empty console space; kept custom FIM rule and successful validation/status output |
+
+The saved dashboard image is already the full five-panel version after the earlier replacement. The remaining images were kept because their evidence is legible as currently displayed when opened at full resolution. The Windows-local **4104** screenshot shows *investigation-generated* records 871/872, not the target record 878; that distinction remains explicitly documented in the gallery and Case 003.
+
+No visible passwords, session tokens, or API keys were identified during the screenshot review; visual review cannot provide an absolute guarantee against sensitive-data exposure.
+
 ## Analyst evidence quality
 
 A clean screenshot must demonstrate a relevant fact rather than merely look technical.
@@ -43,6 +58,6 @@ The gallery's Windows-local query screenshot shows **EventRecordIDs 871 and 872*
 
 ## Source integrity
 
-The companion `SOC-Portfolio-Reviewed-Screenshots.zip` export includes an asset manifest describing source filenames, crop coordinates, output dimensions, and SHA-256 checksums. Originals are retained separately. Screenshot crops are for presentation, not for changing evidence.
+A refreshed local asset manifest records original source filenames, crop coordinates, output dimensions, and SHA-256 checksums of the currently published files. Source screenshots are retained outside this public repository. The older `SOC-Portfolio-Reviewed-Screenshots.zip` export predates the final image-quality fixes and should not be used as the latest screenshot set. Cropping improves presentation but does not alter security event content.
 
 Keep future updates accurate by linking a case report to its observed test and explicitly noting when a screenshot shows a *different* step in the investigation.
