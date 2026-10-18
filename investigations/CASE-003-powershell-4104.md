@@ -8,7 +8,9 @@
 
 | Local PowerShell event | Wazuh normalized event |
 | --- | --- |
-| [![Local PowerShell 4104](../assets/screenshots/event-4104-windows-local.png)](../assets/screenshots/event-4104-windows-local.png) | [![Wazuh 4104 correlated details](../assets/screenshots/event-4104-wazuh-correlation.png)](../assets/screenshots/event-4104-wazuh-correlation.png) |
+| [![Local 4104 search-generated events: records 871 and 872](../assets/screenshots/event-4104-windows-local.png)](../assets/screenshots/event-4104-windows-local.png) | [![Wazuh 4104 record 878 for controlled registry test](../assets/screenshots/event-4104-wazuh-correlation.png)](../assets/screenshots/event-4104-wazuh-correlation.png) |
+
+**Evidence caution:** The left screenshot captures the investigation's *own PowerShell search-generated events* (RecordIDs **871/872**), not the target event 878. The right screenshot is the actual Wazuh record for the separate authorized `Case003Fresh` test (EventRecordID **878**). They should **not** be presented as two views of the same event.
 
 ## Detection objective
 
@@ -43,7 +45,7 @@ A **new PowerShell session** was opened, the controlled activity was repeated wi
 | Wazuh rule level | `3` |
 | Observed script block | `New-ItemProperty ... Case003Fresh ...` |
 
-The **matching EventRecordID and ScriptBlock ID** between the Windows event and the Wazuh document establish that the alert corresponds to the same logged activity.
+The Wazuh document preserves Windows-origin `EventRecordID 878`, ScriptBlock ID and the `Case003Fresh` command text, allowing the test alert to be tied to the intended controlled action. The local screenshot included above demonstrates a separate telemetry pitfall (self-generated search logs); it **does not independently verify record 878**.
 
 ## Analyst decision
 
@@ -54,4 +56,4 @@ The **matching EventRecordID and ScriptBlock ID** between the Windows event and 
 
 ## Screenshot status
 
-The two evidence previews are committed to the private repository. Both show local lab results, with the original files preserved in the supplied archive. [Evidence gallery](../evidence/GALLERY.md).
+The two evidence previews serve different purposes: local search-generated records vs. the actual Wazuh document for the controlled test. Their original sources are preserved in the supplied archive. [Evidence gallery](../evidence/GALLERY.md).
