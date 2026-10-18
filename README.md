@@ -98,7 +98,11 @@ These folders will be populated incrementally after verifying the source files a
 
 ## Scope and transparency
 
-This is a **personal learning lab**, not a production SOC deployment or a claim of professional incident-response experience. AI was used as a learning and troubleshooting assistant; lab configuration, command execution, investigation exercises, and validation were performed interactively in the user's environment.
+This is a **personal learning lab**, not a production SOC deployment or a claim of professional incident-response experience.
+
+I built and operated the virtual lab, carried out configuration changes and controlled tests, investigated alerts, interpreted evidence, and checked the results in Windows logs and Wazuh. The custom detection and monitoring dashboard were validated through hands-on testing.
+
+AI-assisted guidance supported parts of the learning process, including technical explanations, troubleshooting suggestions, command and configuration examples, and documentation drafting. It was **a supporting tool, not evidence of a detection or a substitute for hands-on validation and analytical judgment**.
 
 No live company data or third-party systems were used.
 
