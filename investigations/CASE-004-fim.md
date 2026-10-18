@@ -66,4 +66,4 @@ A separate custom rule `100100` was written and tested to highlight changes to t
 
 ## Screenshot status
 
-Cropped before/after SHA-256 screenshots and Wazuh rule 550 document fields are included in the private repository. [Evidence gallery](../evidence/GALLERY.md).
+Cropped before/after SHA-256 screenshots and Wazuh rule 550 document fields are included in the repository. [Evidence gallery](../evidence/GALLERY.md).
