@@ -4,6 +4,12 @@
 **Environment:** Windows 10 VM + Wazuh Security Configuration Assessment (SCA)  
 **Disposition:** Authorized configuration change; control re-evaluated as passed
 
+## Evidence preview
+
+[![Wazuh SCA shows PowerShell Transcription as Passed](../assets/screenshots/sca-transcription-passed.png)](../assets/screenshots/sca-transcription-passed.png)
+
+*Post-remediation check result. See the discussion below for the original failure.*
+
 ## Initial finding
 
 The Wazuh SCA check for PowerShell Transcription reported **Failed**. Inspection of the Windows policy locations did not show a configured `Transcription` policy key:
@@ -41,6 +47,6 @@ The final value was confirmed with `Get-ItemProperty`. A PowerShell transcript t
 3. A single passed setting does not certify overall host hardening.
 4. Transcription and Script Block Logging (event 4104) are **different telemetry sources**.
 
-## Evidence status
+## Screenshot status
 
-Before/after screenshots exist in the supplied evidence archive. Publication is pending review for personal and system identifiers.
+The cropped post-remediation SCA screenshot is included in the private repository. The original failure view remains in the source archive for technical appendix review. See the [gallery](../evidence/GALLERY.md).
