@@ -49,4 +49,4 @@ The final value was confirmed with `Get-ItemProperty`. A PowerShell transcript t
 
 ## Screenshot status
 
-The cropped post-remediation SCA screenshot is included in the private repository. The original failure view remains in the source archive for technical appendix review. See the [gallery](../evidence/GALLERY.md).
+The cropped post-remediation SCA screenshot is included in the repository. The original failure view remains in the source archive for technical appendix review. See the [gallery](../evidence/GALLERY.md).
