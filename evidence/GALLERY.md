@@ -48,9 +48,9 @@ Supporting detail: [TCP 1514/1515 connectivity test](../assets/screenshots/agent
 | --- | --- |
 | [![SHA-256 computed before FIM file edit](../assets/screenshots/fim-sha256-before.png)](../assets/screenshots/fim-sha256-before.png) | [![SHA-256 computed after FIM file edit](../assets/screenshots/fim-sha256-after.png)](../assets/screenshots/fim-sha256-after.png) |
 
-[![Wazuh FIM document, rule 550, before/after integrity values](../assets/screenshots/fim-rule-550-hashes.png)](../assets/screenshots/fim-rule-550-hashes.png)
+[![Wazuh FIM document, rule 550, syscheck.sha256_after and file metadata](../assets/screenshots/fim-rule-550-hashes.png)](../assets/screenshots/fim-rule-550-hashes.png)
 
-*The file checksum changed; Wazuh rule **550** and `syscheck` fields reflect a monitored modification. The SHA-256 value generated locally after the edit matched the alert's `syscheck.sha256_after`.*
+*The two PowerShell screenshots above provide the **local** before/after SHA-256 comparison. The Wazuh rule **550** document shown below them contains `syscheck.sha256_after`, which matches the separately computed post-change hash; that Wazuh screenshot does **not** display a `sha256_before` field.*
 
 [Open full FIM alert search](../assets/screenshots/fim-rule-550-hit.png) · [Read Case 004](../investigations/CASE-004-fim.md)
 
@@ -77,7 +77,8 @@ Supporting detail: [TCP 1514/1515 connectivity test](../assets/screenshots/agent
 ## Integrity and review notes
 
 - The images above were copied from the provided evidence pack, then **cropped only**. Cropping does not establish new facts or replace original logs.
-- All 15 derivative image files have a local SHA-256 manifest in the companion asset export.
+- All 15 screenshots were visually reviewed again on 2026-10-18. The complete dashboard remains published; three Wazuh alert-search screenshots now show the full result rows, and the custom-rule-validation screenshot focuses on the relevant XML and successful validation output. Original technical values were not altered.
+- Source-original references, crop coordinates, and SHA-256 checksums are retained in the refreshed local audit manifest.
 - Images from the five draft visualization editors are **not** used as final dashboard evidence.
 - Private lab IPs and VM host labels are intentionally retained as part of the architecture evidence. No credentials or tokens should be published.
 - Avoid treating a "true positive detection of authorized test activity" as a confirmed malicious incident.
