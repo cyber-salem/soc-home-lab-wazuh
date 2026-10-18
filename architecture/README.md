@@ -60,4 +60,4 @@ File Integrity Monitoring (FIM) works differently: the Wazuh agent's `syscheck` 
 - One connected Windows endpoint, not a multi-endpoint fleet.
 - NAT is used in part of the virtual setup: **host-only is not equivalent to complete network isolation**.
 - No production data, enterprise identity provider, or attack traffic dataset is claimed.
-- Architecture screenshots are pending privacy review before inclusion.
+- Selected agent-connectivity screenshots are linked above; source originals remain outside the repository.
