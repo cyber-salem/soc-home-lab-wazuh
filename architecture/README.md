@@ -21,6 +21,12 @@ flowchart LR
 
 The VMs were configured with host-only connectivity for lab communication and NAT where needed for updates. The private `192.168.56.0/24` addresses refer to this local training network; they are not public Internet addresses.
 
+## Connection verification
+
+[![Windows VM connectivity to Wazuh TCP 1514 and 1515](../assets/screenshots/agent-connectivity-1514-1515.png)](../assets/screenshots/agent-connectivity-1514-1515.png)
+
+[![Active Windows Wazuh agent](../assets/screenshots/wazuh-agent-active.png)](../assets/screenshots/wazuh-agent-active.png)
+
 ## Collection and analysis path
 
 1. A Windows action produces an event (for example, PowerShell event `4104`).
